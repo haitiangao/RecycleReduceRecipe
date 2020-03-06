@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RecycleReduceRecipe</string>
+    <string name="create_recipe">Create Recipe</string>
+    <string name="titleString">Go Go Recipe!</string>
+    <string name="select_recipe">Select Recipe</string>
 </resources>
