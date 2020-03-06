@@ -1,13 +1,13 @@
-package com.example.recyclereducerecipe;
+package com.example.recyclereducerecipe.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.recyclereducerecipe.R;
+
 
 public class MainActivity extends AppCompatActivity {
-    View createRecipe;
-    View selectRecipe;
 
 
     @Override
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void GoToRecipeList(View view){
         // TODO: go to recipelist view
+
     }
 
 
