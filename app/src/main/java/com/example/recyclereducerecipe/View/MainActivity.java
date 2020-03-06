@@ -1,6 +1,8 @@
 package com.example.recyclereducerecipe.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,13 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void CreateThisRecipe(View view){
+    public void createThisRecipe(View view){
         //TODO: go to creation view
     }
 
-    public void GoToRecipeList(View view){
+    public void goToRecipeList(View view){
         // TODO: go to recipelist view
-
+        Intent displayIntent = new Intent(this, RecipeList.class);
+        startActivity(displayIntent);
     }
 
 

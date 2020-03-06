@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:onClick="CreateThisRecipe"/>
+        android:onClick="createThisRecipe"/>
 
     <Button
         android:id="@+id/select"
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create"
-        android:onClick="GoToRecipeList"/>
+        android:onClick="goToRecipeList"/>
 
     <ImageView
         android:id="@+id/imageView"
