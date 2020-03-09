@@ -15,10 +15,23 @@ public class Recipe implements Parcelable{
         this.recipeIngredients = recipeIngredients;
     }
 
-    protected Recipe(Parcel in){
+    public Recipe(Parcel in){
         recipeName = in.readString();
         recipeIngredients=in.readArrayList(String.class.getClassLoader());
     }
+
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 
     public String getRecipeName() {
         return recipeName;

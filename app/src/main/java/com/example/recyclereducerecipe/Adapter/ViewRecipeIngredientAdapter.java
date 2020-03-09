@@ -1,10 +1,5 @@
-package com.example.recyclereducerecipe;
+package com.example.recyclereducerecipe.Adapter;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,21 +7,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.recyclereducerecipe.model.Recipe;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.DataObjectHolder> {
+import java.util.List;
+import com.example.recyclereducerecipe.R;
+
+public class ViewRecipeIngredientAdapter extends RecyclerView.Adapter<ViewRecipeIngredientAdapter.DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<Recipe> mDataset;
+    private List<Recipe> mDataset;
     private static MyClickListener myClickListener;
 
     String[] recipename = {"Burrito", "Chicken Sandwhich", "Hamburger", "Greek Salad", "Manacotti", "Pizza", "Roast_Beef"};
@@ -53,6 +43,7 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Da
     String[] roast = {"rump roast\n", "onion\n ", "potatoes\n ", "garlic\n", "carrots\n", " oil\n", " mushroom\n", " green beans\n"};
     int[] imageH = {R.drawable.rumproast, R.drawable.onion, R.drawable.potatoes, R.drawable.garlic, R.drawable.carrots,
             R.drawable.oil, R.drawable.mushroom, R.drawable.greenbean};
+
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView label;
@@ -100,7 +91,7 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Da
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
-    public RecipeViewAdapter(ArrayList<Recipe> myDataset) {
+    public ViewRecipeIngredientAdapter(List<Recipe> myDataset) {
         mDataset = myDataset;
     }
     @Override
@@ -113,41 +104,9 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Da
     }
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        for (int i = 0; i < 10; i++)
-            if (i == 0){
-                holder.label.setText(mDataset.get(position).getRecipeName());
-                holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                holder.picture.setImageResource(imageB[position]);
-                if (i == 1){
-                    holder.label.setText(mDataset.get(position).getRecipeName());
-                    holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                    holder.picture.setImageResource(imageC[position]);
-                    if (i == 2){
-                        holder.label.setText(mDataset.get(position).getRecipeName());
-                        holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                        holder.picture.setImageResource(imageD[position]);
-                        if (i == 3) {
-                            holder.label.setText(mDataset.get(position).getRecipeName());
-                            holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                            holder.picture.setImageResource(imageE[position]);
-                            if (i == 4) {
-                                holder.label.setText(mDataset.get(position).getRecipeName());
-                                holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                                holder.picture.setImageResource(imageF[position]);
-                                if (i == 5) {
-                                    holder.label.setText(mDataset.get(position).getRecipeName());
-                                    holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                                    holder.picture.setImageResource(imageG[position]);
-                                    if (i == 6) {
-                                        holder.label.setText(mDataset.get(position).getRecipeName());
-                                        holder.dateTime.setText(mDataset.get(position).getRecipeIngredients());
-                                        holder.picture.setImageResource(imageH[position]);
-                                    }
-                                }
-                            }
-                        }
-                    }}
-                    }
+        holder.label.setText(mDataset.get(position).getRecipeName());
+        holder.picture.setImageResource(imageB[position]);
+
     }
     public void addItem(Recipe label, int index) {
         mDataset.add(index, label);

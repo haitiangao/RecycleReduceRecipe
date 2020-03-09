@@ -19,9 +19,16 @@ import butterknife.ButterKnife;
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
 
     private List<Recipe> recipeList;
+    private UserClickListener userClickListener;
 
-    public RecipeListAdapter(List<Recipe> recipeList){
+    public RecipeListAdapter(List<Recipe> recipeList, UserClickListener userClickListener){
         this.recipeList = recipeList;
+        this.userClickListener = userClickListener;
+
+    }
+
+    public interface UserClickListener {
+        void displayUser(Recipe recipe);
     }
 
     @NonNull
@@ -35,12 +42,17 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     @Override
     public void onBindViewHolder(@NonNull RecipeListAdapter.RecipeViewHolder holder, int position) {
         holder.individualRecipe.setText(recipeList.get(position).getRecipeName());
+        holder.itemView.setOnClickListener(view -> {
+            userClickListener.displayUser(recipeList.get(position));
+        });
     }
 
     @Override
     public int getItemCount() {
         return recipeList.size();
     }
+
+
 
     class RecipeViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.individualRecipe)

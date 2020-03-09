@@ -1,23 +1,32 @@
-package com.example.recyclereducerecipe;
+package com.example.recyclereducerecipe.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.recyclereducerecipe.Adapter.ViewRecipeIngredientAdapter;
 import com.example.recyclereducerecipe.model.Recipe;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.recyclereducerecipe.R;
+
+
+public class DisplayIngredient extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private List<Recipe> recipeList = new ArrayList<Recipe>();
+    public static final String RECIPE_KEY ="get.recipe.info";
+    private Recipe recipe;
     private static String LOG_TAG = "MainActivity";
     private TextView myTextView;
     String[] recipename = {"Burrito", "Chicken Sandwhich", "Hamburger", "Greek Salad", "Manacotti", "Pizza", "Roast_Beef"};
@@ -31,27 +40,26 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RecipeViewAdapter(getRecipeName());
+        mAdapter = new ViewRecipeIngredientAdapter(recipeList);
         mRecyclerView.setAdapter(mAdapter);
+
+        Intent intent = getIntent();
+        recipe =intent.getParcelableExtra(RECIPE_KEY);
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        ((RecipeViewAdapter) mAdapter).setOnItemClickListener(new RecipeViewAdapter.MyClickListener() {
+        ((ViewRecipeIngredientAdapter) mAdapter).setOnItemClickListener(new ViewRecipeIngredientAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
                 String name = (recipename[position]);
-                Toast.makeText(MainActivity.this, name + " was clicked!", Toast.LENGTH_SHORT).show();
-            }});}
+                Toast.makeText(DisplayIngredient.this, name + " was clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-            public ArrayList<Recipe> getRecipeName() {
-                ArrayList results = new ArrayList<Recipe>();
-                for (int index = 0; index < 20; index++) {
-                    Recipe obj = new Recipe("recipe" + index);
-                    results.add(index, obj);
-                }
-                return results;
-            }}
+
+}

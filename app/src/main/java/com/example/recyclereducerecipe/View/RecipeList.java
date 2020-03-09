@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.recyclereducerecipe.Adapter.RecipeListAdapter;
+import com.example.recyclereducerecipe.Adapter.ViewRecipeIngredientAdapter;
 import com.example.recyclereducerecipe.R;
 import com.example.recyclereducerecipe.model.Recipe;
 
@@ -23,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecipeList extends AppCompatActivity {
+public class RecipeList extends AppCompatActivity implements RecipeListAdapter.UserClickListener{
 
     private String delimiter = ";";
     private String fileName = "save.sav";
@@ -41,7 +43,7 @@ public class RecipeList extends AppCompatActivity {
         ButterKnife.bind(this);
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, RecyclerView.VERTICAL);
         recycleRecipeView.setLayoutManager(new LinearLayoutManager(this));
-        recycleRecipeView.setAdapter(new RecipeListAdapter(recipeList));
+        recycleRecipeView.setAdapter(new RecipeListAdapter(recipeList, this));
         recycleRecipeView.addItemDecoration(itemDecoration);
         try {
             readFromInternal();
@@ -89,10 +91,18 @@ public class RecipeList extends AppCompatActivity {
 
 
     private void refreshView(){
-        RecipeListAdapter recyclerAdaptor = new RecipeListAdapter(recipeList);
+        RecipeListAdapter recyclerAdaptor = new RecipeListAdapter(recipeList, this);
         recycleRecipeView.setAdapter(null);
         recycleRecipeView.setAdapter(recyclerAdaptor);
         recyclerAdaptor.notifyDataSetChanged();
     }
 
+    @Override
+    public void displayUser(Recipe recipe) {
+
+        Intent displayIntent = new Intent(this, DisplayIngredient.class);
+        displayIntent.putExtra(DisplayIngredient.RECIPE_KEY, recipe);
+        startActivity(displayIntent);
+
+    }
 }

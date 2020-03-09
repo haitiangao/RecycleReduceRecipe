@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createThisRecipe(View view){
-        //TODO: go to creation view
+        // TODO: go to creation view
+        Intent createIntent = new Intent (this, RecipeCreateEditView.class);
+        startActivity(createIntent);
     }
 
     public void goToRecipeList(View view){

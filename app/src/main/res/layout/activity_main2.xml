@@ -7,7 +7,7 @@
     android:orientation="vertical"
     card_view:cardCornerRadius="2dp"
     card_view:contentPadding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".View.DisplayIngredient">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/back"
-                    android:textColor="@color/cardview_dark_background"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="289dp"
@@ -82,7 +82,7 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/delete"
-                    android:textColor="@color/cardview_dark_background"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="289dp"
@@ -95,7 +95,7 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/edit"
-                    android:textColor="@color/cardview_dark_background"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="286dp"
@@ -108,7 +108,7 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/next"
-                    android:textColor="@color/cardview_dark_background"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="289dp"
@@ -121,7 +121,7 @@
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="@string/previous"
-                    android:textColor="@color/cardview_dark_background"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="291dp"
